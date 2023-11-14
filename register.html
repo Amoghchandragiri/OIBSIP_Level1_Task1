@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="indoor.html">Indoor Sports</a></li>
+        <li><a href="outdoor.html">Outdoor Sports</a></li>
+        <li><a href="register.php">Register</a></li>
+        <li><a href="feedback.php">Feedback</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <form action="#" method="post">
+        <label for="username"><b>Name</b></label>
+        <input type="text" id="username" placeholder="Enter Username"
+        name="Username" required="true"><br><br>
+        <label for="text"><b>Number</b></label>
+        <input type="text" id="text" placeholder="Enter number"
+        name="number" required="true"><br><br>
+        <label for="text"><b>Gender</b></label>
+        <input type="text" id="text" placeholder="Enter gender"
+        name="gender" required="true"><br><br>
+        <label for="text"><b>Age</b></label>
+        <input type="text" id="text" placeholder="Enter age"
+        name="age" required="true"><br><br>
+        <label for="text"><b>Pincode</b></label>
+        <input type="text" id="text" placeholder="Enter pincode"
+        name="pincode" required="true"><br><br>
+        <button type="submit">Login</button><br>
+    </form>
+  </main>
+  <footer>
+    &copy; 2023 Elite Sports Center. All rights reserved.
+  </footer>
+</body>
+</html>
+<?<php>
+    if(isset($_POST["name"])&&isset($_POST["email"])&&isset($_POST["feedback"])){
+      $name=$_POST["name"];
+      $email=$_POST["email"];
+      $feedback=$_POST["feedback"];
+      
+      $conn=mysqli_connect("127.0.0.1:3307","root","","sports");
+      if(!$conn){
+          die("Not connected".mysqli_connect_error());
+      
+      }
+      else
+      {
+          echo "Connected";
+          $sql="INSERT INTO `sports`(`name`, `email`, `feedback`) VALUES ('$name','$email','$feedback')";
+          $result=mysqli_query($conn,$sql);
+          if($result){
+              echo '<script type ="text/JavaScript">';  
+              echo 'alert("Feedback successfully submitted")';  
+              echo '</script>';
+          }
+          else{
+              echo "Insertion failed";
+          }
+        }
+    }
+
+      
+      
+      
+      
+      ?>
